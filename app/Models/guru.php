@@ -17,4 +17,8 @@ class guru extends Model
         return $this->belongsTo(admin::class, 'id');
     }
 
+    public function walas() {
+        return $this->hasOne(walas::class, 'idguru', 'idguru');
+    }
+
 }
