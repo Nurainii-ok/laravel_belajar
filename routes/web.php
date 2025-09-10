@@ -16,9 +16,11 @@ Route::get('/home', [adminController::class, 'home'])->name('home'); // <-- dipe
 // CRUD siswa (hanya admin yang bisa)
 Route::get('/siswa/create', [siswaController::class, 'create'])->name('siswa.create');
 Route::post('/siswa/store', [siswaController::class, 'store'])->name('siswa.store');
-Route::get('/siswa/{id}/edit', [siswaController::class, 'edit'])->name('siswa.edit');
-Route::post('/siswa/{id}/update', [siswaController::class, 'update'])->name('siswa.update');
-Route::get('/siswa/{id}/delete', [siswaController::class, 'destroy'])->name('siswa.delete');
+
+Route::get('/siswa/{idsiswa}/edit', [siswaController::class, 'edit'])->name('siswa.edit');
+Route::post('/siswa/{idsiswa}/update', [siswaController::class, 'update'])->name('siswa.update');
+Route::get('/siswa/{idsiswa}/delete', [siswaController::class, 'destroy'])->name('siswa.delete');
+
 
 Route::get('/register', [adminController::class, 'formRegister'])->name('register');
 Route::post('/register', [adminController::class, 'prosesRegister'])->name('register.post');

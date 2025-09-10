@@ -51,23 +51,22 @@ class SiswaController extends Controller
         return view('siswa.edit', compact('siswa'));
     }
 
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $idsiswa) {
         $request->validate([
             'nama' => 'required|string|max:100',
             'tb'   => 'required|numeric',
             'bb'   => 'required|numeric',
         ]);
 
-        $siswa = Siswa::findOrFail($id);
-        $siswa->update([
-            'nama' => $request->nama,
-            'tb'   => $request->tb,
-            'bb'   => $request->bb,
-        ]);
+        $siswa = Siswa::findOrFail($idsiswa);
+        $siswa->nama = $request->nama;
+        $siswa->tb   = $request->tb;
+        $siswa->bb   = $request->bb;
+        $siswa->save();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Data siswa berhasil diupdate');
     }
+
 
     public function destroy($id)
     {
